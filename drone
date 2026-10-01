@@ -1,0 +1,21 @@
+# Aerius Challenge - Team Code-6
+
+Autonomous drone navigation (ArduPilot SITL + Gazebo, 16-beam LiDAR).
+
+## How it works
+- reads the lidar and splits the surroundings into 5 degree sectors
+- sectors with obstacles are blocked (with some extra margin for drone size)
+- drone flies towards the free sector closest to the goal direction
+- slows down near obstacles, backs off if something is very close
+- if it gets stuck for a while it tries to go around from the other side
+- lands after reaching the goal
+
+## Requirements
+python3, numpy, pymavlink, ROS 2 (rclpy, sensor_msgs). Nothing extra.
+
+## Run
+Start Gazebo + SITL first, then
+
+    python3 navigate.py
+
+Settings (goal, speed, altitude, mavlink port) are at the top of `navigate.py`.
